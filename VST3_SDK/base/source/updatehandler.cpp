@@ -121,6 +121,7 @@ struct UpdateData
 //------------------------------------------------------------------------
 typedef std::list<DeferedChange> DeferedChangeList;
 typedef DeferedChangeList::const_iterator DeferedChangeListIterConst;
+typedef DeferedChangeList::iterator DeferedChangeListIter;
 
 typedef std::list<UpdateData> UpdateDataList;
 typedef UpdateDataList::const_iterator UpdateDataListIterConst;
@@ -507,7 +508,7 @@ tresult PLUGIN_API UpdateHandler::triggerDeferedUpdates (FUnknown* unknown)
 		while (true)
 		{
 			lock.lock ();
-			Update::DeferedChangeListIterConst it =
+			Update::DeferedChangeListIter it =
 			    std::find (table->defered.begin (), table->defered.end (), tmp);
 			if (it == table->defered.end ())
 			{
